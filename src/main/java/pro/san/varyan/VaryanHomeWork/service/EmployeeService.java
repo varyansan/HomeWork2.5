@@ -12,15 +12,7 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
-    List<Employee> employees = new ArrayList<>(List.of(
-            new Employee("Александр", "Петров"),
-            new Employee("Вадим", "Андреев"),
-            new Employee("Светлана", "Сухова"),
-            new Employee("Иван", "Иванов"),
-            new Employee("Мария", "Шишкина"),
-            new Employee("Алексей", "Воробьев"),
-            new Employee("Людмила", "Рощина")
-    ));
+    List<Employee> employees = new ArrayList<>(List.of(new Employee("Александр", "Петров"), new Employee("Вадим", "Андреев"), new Employee("Светлана", "Сухова"), new Employee("Иван", "Иванов"), new Employee("Мария", "Шишкина"), new Employee("Алексей", "Воробьев"), new Employee("Людмила", "Рощина")));
 
     private final int LIST_SIZE = 10;
 
