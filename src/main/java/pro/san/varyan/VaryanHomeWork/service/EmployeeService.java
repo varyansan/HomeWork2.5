@@ -11,19 +11,11 @@ import java.util.*;
 @Service
 public class EmployeeService {
 
-    Map<String, Employee> employees = new HashMap(Map.of(
-
-            "Александр Петров", "Александр"+"Петров",
-            "Вадим Андреев", "Вадим"+"Андреев",
-            "Светлана Сухова", "Светлана"+"Сухова",
-            "Иван Иванов", "Иван"+"Иванов",
-            "Мария Шишкина", "Мария"+"Шишкина",
-            "Алексей Воробьев", "Алексей"+"Воробьев",
-            "Людмила Рощина", "Людмила"+"Рощина"));
+    private final Map<String, Employee> employees = new HashMap<>();
 
     private final int LIST_SIZE = 10;
 
-    public Employee addEmployee(String firstName, String lastName) throws EmployeeStorageIsFullException, EmployeeAlreadyAddedException {
+    public Employee addEmployee(String firstName, String lastName, int department, double salary) throws EmployeeStorageIsFullException, EmployeeAlreadyAddedException {
         Employee employee = new Employee(firstName, lastName);
         if (employees.size() >= LIST_SIZE) {
             throw new EmployeeStorageIsFullException("Превышен лимит сотрудников!");
@@ -60,6 +52,7 @@ public class EmployeeService {
     public Collection<Employee> findAll() {
         return Collections.unmodifiableCollection(employees.values());
     }
+
 }
 
 
