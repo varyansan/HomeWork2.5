@@ -1,6 +1,8 @@
 package pro.san.varyan.VaryanHomeWork.employee;
 
 import java.util.Objects;
+import org.apache.commons.lang3.StringUtils;
+import pro.san.varyan.VaryanHomeWork.exception.EmployeeNameValidationException;
 
 public class Employee {
 
@@ -12,9 +14,16 @@ public class Employee {
 
     public Employee(String firstName, String lastName) {
         this.department = department;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = checkParam(firstName);
+        this.lastName = checkParam(lastName);
         this.salary = salary;
+    }
+
+    private String checkParam(String string) {
+        if (!StringUtils.isAlpha(string)) {
+            throw new EmployeeNameValidationException("Неверное имя!");
+        }
+        return StringUtils.capitalize(string);
     }
 
     public int getDepartment() {
@@ -34,11 +43,11 @@ public class Employee {
     }
 
     public String getFirstName() {
-        return firstName;
+        return checkParam(firstName);
     }
 
     public String getLastName() {
-        return lastName;
+        return checkParam(lastName);
     }
 
     public String getFullName() {
